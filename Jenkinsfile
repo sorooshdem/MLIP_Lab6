@@ -14,8 +14,11 @@ pipeline {
             steps {
                 sh '''#!/bin/bash
                 echo 'Test Step: We run testing tool like pytest here'
-                source /var/lib/jenkins/workspace/mliplab6/mlip/bin/activate
+                python3 -m venv mlip
+                source mlip/bin/activate
+                pip install pytest numpy pandas scikit-learn
                 pytest --maxfail=1 --disable-warnings
+                deactivate
                 '''
 
             }
