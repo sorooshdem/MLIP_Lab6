@@ -14,14 +14,8 @@ pipeline {
             steps {
                 sh '''#!/bin/bash
                 echo 'Test Step: We run testing tool like pytest here'
-
-                # TODO fill out the path to conda here
-                sudo /opt/conda/etc/profile.d/conda.sh init
-
-                # TODO Complete the command to run pytest
-                sudo /opt/conda/etc/profile.d/conda.sh run -n dev pytest
-
-                # echo 'pytest not runned'
+                source /var/lib/jenkins/workspace/mliplab6/mlip/bin/activate
+                pytest --maxfail=1 --disable-warnings
                 '''
 
             }
